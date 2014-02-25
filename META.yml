@@ -25,11 +25,11 @@ optional_features: {}
 provides:
   Safe::Isa::XS:
     file: lib/Safe/Isa/XS.pm
-    version: 0.000_01
+    version: 0.000_02
 resources:
   X_identifier: http://purl.org/NET/cpan-uri/dist/Safe-Isa-XS/project
   bugtracker: http://rt.cpan.org/Dist/Display.html?Queue=Safe-Isa-XS
   homepage: https://metacpan.org/release/Safe-Isa-XS
   license: http://dev.perl.org/licenses/
   repository: https://github.com/tobyink/p5-safe-isa-xs
-version: 0.000_01
+version: 0.000_02

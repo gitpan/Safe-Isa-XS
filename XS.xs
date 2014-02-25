@@ -6,17 +6,18 @@
 
 #include "const-c.inc"
 
-int _mycall (char* methodname, SV* args[], int argc, int gimme)
+int _mycall (char* methodname, SV* args[], int argc)
 {
 	int i;
 	int result_count;
-	
-	dSP;
 	
 	if (! sv_isobject(args[0]))
 	{
 		return 0;
 	}
+	
+	dSP;
+	SP -= argc;
 	
 	// Prepare to call method
 	ENTER;
@@ -29,12 +30,12 @@ int _mycall (char* methodname, SV* args[], int argc, int gimme)
 	PUTBACK;
 	
 	// Call method
-	result_count = call_method(methodname, gimme);
+	result_count = call_method(methodname, GIMME_V);
 	SPAGAIN;
 	
 	// Unpack return results
 	SV* ret[result_count];
-	for (i=0; i<result_count+argc; i++)
+	for (i=0; i<result_count; i++)
 	{
 		ret[i] = POPs;
 	}
@@ -66,7 +67,7 @@ PPCODE:
 	for (i = 0; i < items; i++) {
 		args[i] = ST(i);
 	}
-	XSRETURN( _mycall("isa", args, items, GIMME_V) );
+	XSRETURN( _mycall("isa", args, items) );
 }
 
 void
@@ -79,7 +80,7 @@ PPCODE:
 	for (i = 0; i < items; i++) {
 		args[i] = ST(i);
 	}
-	XSRETURN( _mycall("can", args, items, GIMME_V) );
+	XSRETURN( _mycall("can", args, items) );
 }
 
 void
@@ -92,7 +93,7 @@ PPCODE:
 	for (i = 0; i < items; i++) {
 		args[i] = ST(i);
 	}
-	XSRETURN( _mycall("does", args, items, GIMME_V) );
+	XSRETURN( _mycall("does", args, items) );
 }
 
 void
@@ -105,5 +106,5 @@ PPCODE:
 	for (i = 0; i < items; i++) {
 		args[i] = ST(i);
 	}
-	XSRETURN( _mycall("DOES", args, items, GIMME_V) );
+	XSRETURN( _mycall("DOES", args, items) );
 }

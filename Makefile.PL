@@ -22,7 +22,7 @@ my $meta = {
                         test => { requires => { "Test::More" => 0.96 } },
                       },
   "provides"       => {
-                        "Safe::Isa::XS" => { file => "lib/Safe/Isa/XS.pm", version => "0.000_01" },
+                        "Safe::Isa::XS" => { file => "lib/Safe/Isa/XS.pm", version => "0.000_02" },
                       },
   "release_status" => "testing",
   "resources"      => {
@@ -32,7 +32,7 @@ my $meta = {
                         repository   => { type => "git", web => "https://github.com/tobyink/p5-safe-isa-xs" },
                         X_identifier => "http://purl.org/NET/cpan-uri/dist/Safe-Isa-XS/project",
                       },
-  "version"        => "0.000_01",
+  "version"        => "0.000_02",
 };
 
 my %dynamic_config;
